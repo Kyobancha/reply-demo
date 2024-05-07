@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom'
+import { StartPage } from './views/Startpage'
 
 export enum RoutePath {
   HOME = '/',
@@ -12,7 +13,7 @@ export enum RoutePath {
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path={RoutePath.HOME} element={<p>Home</p>} />
+      <Route path={RoutePath.HOME} element={<StartPage />} />
       <Route path={RoutePath.TEST} element={<p>Test</p>} />
     </>
   )
