@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { NavigationData } from '../types/NavigationData'
-import { NavigationItem } from './NavigationItem'
+import { NavigationChildrenList } from './NavigationItem'
 
 const drawerWidth = 240
 
@@ -83,9 +83,11 @@ export function Navigation(props: Props) {
             },
           }}
         >
-          <NavigationItem
+          <NavigationChildrenList
             structureData={navigationData?.structure}
             navigationObject={navigationData?.idMap}
+            level={0}
+            componentStyle={{ paddingLeft: 0 }}
           />
         </Drawer>
         <Drawer
@@ -99,9 +101,11 @@ export function Navigation(props: Props) {
           }}
           open
         >
-          <NavigationItem
+          <NavigationChildrenList
             structureData={navigationData?.structure}
             navigationObject={navigationData?.idMap}
+            level={0}
+            componentStyle={{ paddingLeft: 0 }}
           />
         </Drawer>
       </Box>
