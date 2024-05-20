@@ -27,8 +27,15 @@ export function NavigationItem(props: Props) {
 
   const navigationValues = Object.values(navigationObject ?? {})
 
-  function routeHome() {
-    navigate(RoutePath.TEST)
+  function routeWith(navigationItemId: string) {
+    if (navigationObject) {
+      const element = navigationValues.find((navigationElement) => {
+        return navigationElement.id === navigationItemId
+      })
+      if (element?.seoRoute) {
+        navigate(element.seoRoute)
+      }
+    }
   }
 
   function getLabel(navigationItemId: string) {
@@ -77,7 +84,14 @@ export function NavigationItem(props: Props) {
         }}
       >
         {getExpandIcon(navigationItem)}
-        <ListItem key={index} disablePadding onClick={routeHome}>
+        <ListItem
+          key={index}
+          disablePadding
+          onClick={() => {
+            setIsOpen(!isOpen)
+            routeWith(navigationItem.id)
+          }}
+        >
           <ListItemButton>
             <ListItemText
               primary={
