@@ -1,6 +1,7 @@
 export interface NavigationData {
   idMap: { [key: string]: NavigationObject }
   structure: StructureData[]
+  seoRouteMap: SeoRouteMap
 }
 
 export interface NavigationObject {
@@ -15,4 +16,8 @@ export interface NavigationObject {
 export interface StructureData {
   children?: StructureData[]
   id: string
+}
+
+export interface SeoRouteMap {
+  [key: string]: string
 }
