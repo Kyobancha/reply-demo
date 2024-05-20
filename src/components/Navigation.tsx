@@ -9,6 +9,7 @@ import { NavigationChildrenList } from './NavigationItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import { AppBar, IconButton } from '@mui/material'
 
+const appBarHeight = '4rem'
 const drawerWidth = 240
 
 interface Props {
@@ -53,8 +54,8 @@ export function Navigation(props: Props) {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          height: appBarHeight,
+          zIndex: 9999,
         }}
       >
         <Toolbar>
@@ -74,7 +75,11 @@ export function Navigation(props: Props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+          '&  > div > div': { marginTop: appBarHeight },
+        }}
         aria-label="mailbox folders"
       >
         <Drawer
@@ -124,7 +129,6 @@ export function Navigation(props: Props) {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
         <Toolbar />
