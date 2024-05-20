@@ -14,7 +14,7 @@ interface Props {
   content: ReactNode
 }
 
-export function Navigation(props: Props) {
+export function Dashboard(props: Props) {
   const { content } = props
 
   const [mobileOpen, setMobileOpen] = useState(false)
