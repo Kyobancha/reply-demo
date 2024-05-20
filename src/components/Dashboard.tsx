@@ -51,7 +51,7 @@ export function Dashboard() {
         onDrawerTransitionEnd={handleDrawerTransitionEnd}
         onDrawerClose={handleDrawerClose}
       />
-      <Content>test</Content>
+      <Content navigationData={navigationData} />
     </Box>
   )
 }

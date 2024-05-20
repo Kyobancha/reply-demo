@@ -1,12 +1,26 @@
-import { Box, Toolbar } from '@mui/material'
-import { ReactNode } from 'react'
+import { Box, Toolbar, Typography } from '@mui/material'
+import { useLocation } from 'react-router-dom'
+import { NavigationData } from '../types/NavigationData'
+import { useEffect, useState } from 'react'
 
 interface Props {
-  children: ReactNode
+  navigationData: NavigationData | undefined
 }
 
 export function Content(props: Props) {
-  const { children } = props
+  const { navigationData } = props
+
+  const [title, setTitle] = useState('')
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const navigationId: string | undefined =
+      navigationData?.seoRouteMap[pathname]
+
+    if (navigationData && navigationId) {
+      setTitle(navigationData?.idMap[navigationId].label)
+    }
+  }, [pathname])
 
   return (
     <Box
@@ -17,7 +31,10 @@ export function Content(props: Props) {
       }}
     >
       <Toolbar />
-      {children}
+      <Typography>
+        This could be the content for:{' '}
+        <span style={{ color: 'red' }}>{title}</span>
+      </Typography>
     </Box>
   )
 }
