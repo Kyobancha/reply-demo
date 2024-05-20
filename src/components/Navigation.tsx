@@ -57,7 +57,6 @@ export function Navigation(props: Props) {
           flexShrink: { sm: 0 },
           '&  > div > div': { marginTop: appBarHeight },
         }}
-        aria-label="mailbox folders"
       >
         <Drawer
           variant="temporary"
