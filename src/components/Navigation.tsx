@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { useState, ReactNode } from 'react'
+import { useState, ReactNode, useEffect } from 'react'
 import { NavigationData } from '../types/NavigationData'
 import { NavigationChildrenList } from './NavigationItem'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -12,15 +12,25 @@ import { AppBar, IconButton } from '@mui/material'
 const drawerWidth = 240
 
 interface Props {
-  navigationData?: NavigationData
   content: ReactNode
 }
 
 export function Navigation(props: Props) {
-  const { navigationData, content } = props
+  const { content } = props
 
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const [navigationData, setNavigationData] = useState<NavigationData>()
+
+  useEffect(() => {
+    fetch(
+      'https://partner-navigationservice.e-spirit.cloud/navigation/preview.20eb4e8b-19a2-496a-b151-3317cd7dacd9?language=de_DE&format=caas'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setNavigationData(data)
+      })
+  }, [])
 
   const handleDrawerClose = () => {
     setIsClosing(true)
