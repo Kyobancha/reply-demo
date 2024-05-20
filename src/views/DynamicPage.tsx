@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { NavigationData } from '../types/NavigationData'
 import { Navigation } from '../components/Navigation'
 import { Typography } from '@mui/material'
+import { useLocation } from 'react-router-dom'
 
-export function StartPage() {
+export function DynamicPage() {
   const [navigationData, setNavigationData] = useState<NavigationData>()
+  const { pathname } = useLocation()
 
   useEffect(() => {
     fetch(
@@ -16,10 +18,12 @@ export function StartPage() {
       })
   }, [])
 
+  navigationData?.idMap
+
   return (
     <Navigation
       navigationData={navigationData}
-      content={<Typography>This is the StartPage</Typography>}
+      content={<Typography>You are currently located at {pathname}</Typography>}
     />
   )
 }

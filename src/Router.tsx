@@ -4,17 +4,18 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom'
 import { StartPage } from './views/Startpage'
+import { DynamicPage } from './views/DynamicPage'
 
 export enum RoutePath {
   HOME = '/',
-  TEST = '/test',
+  SPLAT_SEGMENT = '*',
 }
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path={RoutePath.HOME} element={<StartPage />} />
-      <Route path={RoutePath.TEST} element={<p>Test</p>} />
+      <Route path={RoutePath.SPLAT_SEGMENT} element={<DynamicPage />} />
     </>
   )
 )
