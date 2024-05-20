@@ -13,7 +13,7 @@ export function Content(props: Props) {
       component="main"
       sx={{
         flexGrow: 1,
-        p: 3,
+        p: '1rem',
       }}
     >
       <Toolbar />
