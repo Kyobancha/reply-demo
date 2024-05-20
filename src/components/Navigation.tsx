@@ -2,12 +2,10 @@ import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
 import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import { useState, ReactNode, useEffect } from 'react'
 import { NavigationData } from '../types/NavigationData'
 import { NavigationChildrenList } from './NavigationItem'
-import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, IconButton } from '@mui/material'
+import { AppBar } from './AppBar'
 
 const appBarHeight = '4rem'
 const drawerWidth = 240
@@ -51,28 +49,7 @@ export function Navigation(props: Props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          height: appBarHeight,
-          zIndex: 9999,
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Neo Replay Navigation Demo
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBar onClick={handleDrawerToggle} componentHeight={appBarHeight} />
       <Box
         component="nav"
         sx={{
