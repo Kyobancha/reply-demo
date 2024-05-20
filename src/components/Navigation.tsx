@@ -28,7 +28,6 @@ export function Navigation(props: Props) {
       sx={{
         width: { sm: drawerWidth },
         flexShrink: { sm: 0 },
-        '&  > div > div': { marginTop: appBarHeight },
       }}
     >
       <Drawer
@@ -48,6 +47,7 @@ export function Navigation(props: Props) {
         }}
       >
         <NavigationChildrenList
+          sx={{ marginTop: appBarHeight }}
           structureData={navigationData?.structure}
           navigationObject={navigationData?.idMap}
           level={0}
@@ -66,6 +66,7 @@ export function Navigation(props: Props) {
         open
       >
         <NavigationChildrenList
+          sx={{ marginTop: appBarHeight }}
           structureData={navigationData?.structure}
           navigationObject={navigationData?.idMap}
           level={0}
