@@ -1,21 +1,15 @@
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
-import Toolbar from '@mui/material/Toolbar'
-import { useState, ReactNode, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { NavigationData } from '../types/NavigationData'
 import { AppBar } from './AppBar'
 import { Navigation } from './Navigation'
+import { Content } from './Content'
 
 const appBarHeight = '4rem'
 const drawerWidth = '20rem'
 
-interface Props {
-  content: ReactNode
-}
-
-export function Dashboard(props: Props) {
-  const { content } = props
-
+export function Dashboard() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
   const [navigationData, setNavigationData] = useState<NavigationData>()
@@ -57,16 +51,7 @@ export function Dashboard(props: Props) {
         onDrawerTransitionEnd={handleDrawerTransitionEnd}
         onDrawerClose={handleDrawerClose}
       />
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-        }}
-      >
-        <Toolbar />
-        {content}
-      </Box>
+      <Content>test</Content>
     </Box>
   )
 }
