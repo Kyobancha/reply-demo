@@ -1,14 +1,13 @@
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
-import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
 import { useState, ReactNode, useEffect } from 'react'
 import { NavigationData } from '../types/NavigationData'
-import { NavigationChildrenList } from './NavigationItem'
 import { AppBar } from './AppBar'
+import { Navigation } from './Navigation'
 
 const appBarHeight = '4rem'
-const drawerWidth = 240
+const drawerWidth = '20rem'
 
 interface Props {
   content: ReactNode
@@ -50,56 +49,14 @@ export function Dashboard(props: Props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar onClick={handleDrawerToggle} componentHeight={appBarHeight} />
-      <Box
-        component="nav"
-        sx={{
-          width: { sm: drawerWidth },
-          flexShrink: { sm: 0 },
-          '&  > div > div': { marginTop: appBarHeight },
-        }}
-      >
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-            },
-          }}
-        >
-          <NavigationChildrenList
-            structureData={navigationData?.structure}
-            navigationObject={navigationData?.idMap}
-            level={0}
-            componentStyle={{ paddingLeft: 0 }}
-          />
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          <NavigationChildrenList
-            structureData={navigationData?.structure}
-            navigationObject={navigationData?.idMap}
-            level={0}
-            componentStyle={{ paddingLeft: 0 }}
-          />
-        </Drawer>
-      </Box>
+      <Navigation
+        mobileOpen={mobileOpen}
+        navigationData={navigationData}
+        drawerWidth={drawerWidth}
+        appBarHeight={appBarHeight}
+        onDrawerTransitionEnd={handleDrawerTransitionEnd}
+        onDrawerClose={handleDrawerClose}
+      />
       <Box
         component="main"
         sx={{
