@@ -27,6 +27,7 @@ export function NavigationChildrenList(props: Props) {
           level={level}
           index={index}
           componentStyle={componentStyle}
+          key={index}
         ></NavigationItem>
       ))}
     </List>
