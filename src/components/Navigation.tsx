@@ -1,23 +1,23 @@
-import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
 import Drawer from '@mui/material/Drawer'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import { NavigationData } from '../types/NavigationData'
 import { NavigationChildrenList } from './NavigationItem'
+import MenuIcon from '@mui/icons-material/Menu'
+import { AppBar, IconButton } from '@mui/material'
 
 const drawerWidth = 240
 
 interface Props {
   navigationData?: NavigationData
+  content: ReactNode
 }
 
 export function Navigation(props: Props) {
-  const { navigationData } = props
+  const { navigationData, content } = props
 
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
@@ -118,13 +118,7 @@ export function Navigation(props: Props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit.
-        </Typography>
+        {content}
       </Box>
     </Box>
   )
