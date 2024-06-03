@@ -20,7 +20,7 @@ export function Content(props: Props) {
     if (navigationData && navigationId) {
       setTitle(navigationData?.idMap[navigationId].label)
     }
-  }, [pathname])
+  }, [pathname, navigationData])
 
   return (
     <Box
